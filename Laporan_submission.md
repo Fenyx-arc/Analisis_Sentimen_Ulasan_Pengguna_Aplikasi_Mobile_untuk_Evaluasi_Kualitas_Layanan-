@@ -78,12 +78,24 @@ Tahapan ini berfokus pada *Text Preprocessing* agar data teks mentah dapat dipah
 
 ## Modeling
 
-Model dalam proyek ini dibangun menggunakan algoritma **Logistic Regression** menggunakan *library* `scikit-learn`.
+Pada tahapan ini, dilakukan pembangunan model *Machine Learning* untuk mengklasifikasikan teks ulasan pengguna aplikasi mobile ke dalam dua kategori sentimen biner, yaitu **Positif** dan **Negatif**. Proyek ini secara eksklusif menerapkan algoritma **Support Vector Machine (SVM)** dengan pendekatan *Supervised Learning*.
 
-**Tahapan Pemodelan:**
-1. Matriks TF-IDF yang diekstrak dari data latih (*training data*) dimasukkan ke dalam algoritma klasifikasi Logistic Regression.
-2. Model mempelajari pola kata yang saling terhubung (misalnya kata *"lemot"*, *"bug"*, *"kecewa"* berbobot besar pada kelas Negatif, dan *"bagus"*, *"keren"* pada kelas Positif). Algoritma ini dipilih karena sangat efisien dan cepat dalam mengklasifikasikan data teks yang memiliki dimensi fitur yang tinggi (seperti hasil dari TF-IDF).
-3. Setelah model berhasil dilatih, dilakukan pengujian prediksi menggunakan 20% data uji (*testing data*).
+### Algoritma yang Digunakan: Support Vector Machine (SVM)
+Support Vector Machine (SVM) merupakan algoritma klasifikasi yang bekerja dengan cara mencari sebuah *hyperplane* (bidang atau garis pemisah) paling optimal di dalam ruang fitur berdimensi tinggi. Tujuan utama dari algoritma ini adalah memisahkan titik-titik data dari kelas sentimen Positif dan kelas sentimen Negatif dengan jarak (*margin*) yang paling maksimal. 
+
+**Alasan dan Kelebihan Pemilihan SVM untuk Klasifikasi Teks:**
+* **Tangguh pada Dimensi Tinggi:** Proses ekstraksi fitur menggunakan TF-IDF menghasilkan matriks dengan ribuan kolom fitur kata kunci. SVM terbukti sangat tangguh dan memiliki kinerja yang stabil pada data berdimensi tinggi (*high-dimensional space*) tanpa mudah mengalami *overfitting*.
+* **Efisiensi Memori:** SVM menggunakan subset titik data latih khusus (yang disebut sebagai *support vectors*) dalam fungsi keputusan, sehingga penggunaan memorinya relatif lebih efisien selama proses *running*.
+
+### Parameter dan Tahapan Pelatihan Model
+Proses pemodelan diimplementasikan menggunakan pustaka `scikit-learn` melalui fungsi `SVC()`. Parameter-parameter kunci yang dikonfigurasi dalam model ini adalah sebagai berikut:
+
+1. **`kernel='linear'`**: Pemilihan kernel linear didasarkan pada karakteristik data teks hasil TF-IDF yang umumnya bersifat *linearly separable* (dapat dipisahkan secara linear) karena dimensi fiturnya yang sangat besar. Kernel linear memberikan proses komputasi yang jauh lebih cepat dan hasil yang lebih optimal untuk analisis sentimen teks dibandingkan kernel non-linear (seperti RBF atau *Polynomial*).
+2. **`C=1.0`**: Parameter penalti ini berfungsi untuk mengontrol nilai ambang batas keseimbangan (*trade-off*) antara toleransi kesalahan klasifikasi pada data latih dan pelebaran *margin* keputusan. Nilai `1.0` digunakan sebagai nilai standar yang optimal untuk menjaga generalisasi model agar tetap baik pada data baru.
+3. **`random_state=42`**: Parameter ini diterapkan untuk mengunci pengacakan internal model, sehingga hasil pelatihan bersifat konsisten (*reproducible*) setiap kali eksperimen dijalankan ulang.
+
+**Proses Pelatihan:**
+Model SVM dilatih dengan mengeksekusi fungsi `.fit()` menggunakan pasangan matriks fitur numerik data latih (`X_train_tfidf`) dan label target aslinya (`y_train`). Melalui proses ini, model mempelajari bobot geometris dari kombinasi kata kunci untuk menentukan batas keputusan sentimen secara akurat.
 
 ---
 
@@ -102,7 +114,7 @@ Berdasarkan visualisasi *heatmap* di atas, rincian performa model adalah:
 * **False Negative (FN):** 231 (Sentimen positif salah prediksi menjadi negatif).
 
 📌 **Kesimpulan Evaluasi:**
-1. **Performa Model yang Solid:** Kombinasi metode TF-IDF dengan algoritma Logistic Regression terbukti efektif dalam melakukan klasifikasi sentimen dengan tingkat akurasi sebesar 83,27%. Model menunjukkan performa yang stabil dan mampu membedakan antara sentimen positif dan negatif dengan baik.
+1. **Performa Model yang Solid:** Kombinasi metode TF-IDF dengan algoritma **Support Vector Machine (SVM)** terbukti efektif dalam melakukan klasifikasi sentimen dengan tingkat akurasi sebesar 83,27%. Model menunjukkan performa yang stabil dan mampu membedakan antara sentimen positif dan negatif dengan baik..
 2. **Efektivitas pada Kelas Negatif:** Mengingat dataset memiliki kecenderungan class imbalance dengan dominasi ulasan negatif (6.841 data), model menunjukkan sensitivitas yang sangat baik dalam mengenali pola ulasan keluhan. Hal ini menjadi keunggulan strategis karena tujuan utama sistem ini adalah untuk mengidentifikasi sentimen negatif guna evaluasi kualitas layanan aplikasi.
 3. **Kesiapan Implementasi (Deployment):** Sistem ini telah memenuhi kriteria kelayakan untuk diimplementasikan ke dalam pipeline layanan keluhan pengguna secara otomatis. Kemampuan model dalam meminimalisir kesalahan deteksi pada sentimen negatif memastikan bahwa hampir seluruh keluhan pengguna dapat teridentifikasi, yang memungkinkan tim layanan pelanggan untuk memberikan respons lebih cepat dan efisien.
 4. **Optimalisasi di Masa Mendatang:** Meskipun sudah sangat layak pakai, terdapat peluang untuk meningkatkan performa pada kelas positif melalui fine-tuning model atau penambahan teknik balancing data untuk mengurangi jumlah False Negative di masa depan.
