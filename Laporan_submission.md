@@ -35,18 +35,21 @@ Dataset yang digunakan berisi ulasan pengguna terhadap sebuah aplikasi *mobile* 
 
 | Fitur | Deskripsi | Tipe Data |
 |---|---|---|
-| **Ulasan** | Teks ulasan atau *review* mentah dari pengguna aplikasi | Teks (*String*) |
-| **Sentimen** | Label kelas sentimen ulasan (Positif / Negatif) | Kategorikal |
+| **Content** | Teks ulasan atau *review* mentah dari pengguna aplikasi | Teks (*String*) |
+| **Score** | Skor rating (1-5) yang diberikan pengguna | Numerik (*Integer*) |
+| **Sentiment** | Label kelas sentimen (Positif / Negatif) | Kategorikal |
 
 📌 **Uraian Fitur:**
-* **Ulasan:** Fitur independen (*predictor*) yang berisi kalimat yang ditulis pengguna saat menilai aplikasi.
-* **Sentimen:** Target klasifikasi (Fitur dependen) yang memuat kelas sentimen dari ulasan tersebut.
+* **Content:** Fitur independen (*predictor*) yang berisi kalimat yang ditulis pengguna saat menilai aplikasi.
+* **Score:** Nilai rating sebagai dasar penentuan sentimen.
+* **Sentiment:** Target klasifikasi (Fitur dependen) hasil konversi dari nilai *Score* (Skor 4-5 sebagai *Positive*, 1-3 sebagai *Negative*).
 
 🔍 **Kondisi Data:**
-Berdasarkan *Exploratory Data Analysis* (EDA), terdapat karakteristik *class imbalance* pada dataset:
-* **Sentimen Negatif:** Berjumlah sekitar **1.100 ulasan**.
-* **Sentimen Positif:** Berjumlah sekitar **600 ulasan**.
-* **Insight:** Dominasi ulasan negatif ini wajar dan mencerminkan perilaku riil pengguna (*user behavior*). Pengguna cenderung lebih termotivasi untuk menulis ulasan saat mereka mengalami kendala teknis (seperti aplikasi lambat atau transaksi gagal) dibandingkan saat aplikasi berjalan normal. Hal ini sangat menguntungkan model karena lebih banyak belajar mendeteksi kata-kata keluhan.
+Dataset ini memiliki total **12.495 baris** ulasan. Berdasarkan *Exploratory Data Analysis* (EDA), distribusi sentimen pada dataset adalah sebagai berikut:
+
+<img width="708" height="475" alt="data_understanding" src="https://github.com/user-attachments/assets/8f5dcf7e-0979-47c7-a2be-94c26c472f0b" />
+
+* **Insight:** Grafik di atas menunjukkan distribusi sentimen pada dataset yang digunakan. Dominasi kelas sentimen ini memberikan gambaran umum mengenai kepuasan pengguna terhadap aplikasi yang diulas, yang kemudian digunakan sebagai basis pembelajaran model untuk mengklasifikasikan sentimen secara otomatis.
 
 ---
 
