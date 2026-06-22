@@ -96,12 +96,13 @@ Model diuji menggunakan 20% data pengujian yang berjumlah sekitar 344 sampel. Me
 
 📊 **Analisis Confusion Matrix:**
 Berdasarkan visualisasi *heatmap* di atas, rincian performa model adalah:
-* **True Negative (TN) = 215:** Model berhasil menebak 215 ulasan Negatif dengan benar.
-* **True Positive (TP) = 93:** Model berhasil menebak 93 ulasan Positif dengan benar.
-* **False Negative (FN) = 24:** Sebanyak 24 ulasan Positif salah diprediksi sebagai Negatif.
-* **False Positive (FP) = 12:** Sebanyak 12 ulasan Negatif salah diprediksi sebagai Positif.
+* **True Negative (TN): 1181 (Prediksi negatif benar).
+* **True Positive (TP): 900 (Prediksi positif benar).
+* **False Positive (FP): 187 (Sentimen negatif salah prediksi menjadi positif).
+* **False Negative (FN): 231 (Sentimen positif salah prediksi menjadi negatif).
 
 📌 **Kesimpulan Evaluasi:**
-1. **Akurasi Sangat Baik (~89.53%):** Tingkat tebakan total yang benar adalah $308$ dari total $344$ sampel. Kombinasi metode TF-IDF dengan model *Logistic Regression* terbukti sangat optimal.
-2. **Performa Kelas Mayoritas (Negatif) Lebih Unggul:** Model jauh lebih sensitif dan akurat dalam mendeteksi ulasan Negatif. Tingkat kesalahannya sangat minim (hanya 12 dari 227 data aktual negatif salah diklasifikasikan). Hal ini terjadi karena model mendapatkan eksposur kosakata keluhan yang jauh lebih banyak selama proses *training* akibat fenomena *class imbalance*.
-3. **Deployment Siap Pakai:** Mengingat tujuan bisnis adalah mengidentifikasi keluhan, performa model ini sangat mendukung karena jarang melewatkan ulasan negatif. Sistem ini sudah sangat layak untuk diimplementasikan secara otomatis dalam *pipeline* layanan keluhan pengguna.
+1. **Performa Model yang Solid:** Kombinasi metode TF-IDF dengan algoritma Logistic Regression terbukti efektif dalam melakukan klasifikasi sentimen dengan tingkat akurasi sebesar 83,27%. Model menunjukkan performa yang stabil dan mampu membedakan antara sentimen positif dan negatif dengan baik.
+2. **Efektivitas pada Kelas Negatif:** Mengingat dataset memiliki kecenderungan class imbalance dengan dominasi ulasan negatif (6.841 data), model menunjukkan sensitivitas yang sangat baik dalam mengenali pola ulasan keluhan. Hal ini menjadi keunggulan strategis karena tujuan utama sistem ini adalah untuk mengidentifikasi sentimen negatif guna evaluasi kualitas layanan aplikasi.
+3. **Kesiapan Implementasi (Deployment):** Sistem ini telah memenuhi kriteria kelayakan untuk diimplementasikan ke dalam pipeline layanan keluhan pengguna secara otomatis. Kemampuan model dalam meminimalisir kesalahan deteksi pada sentimen negatif memastikan bahwa hampir seluruh keluhan pengguna dapat teridentifikasi, yang memungkinkan tim layanan pelanggan untuk memberikan respons lebih cepat dan efisien.
+4. **Optimalisasi di Masa Mendatang:** Meskipun sudah sangat layak pakai, terdapat peluang untuk meningkatkan performa pada kelas positif melalui fine-tuning model atau penambahan teknik balancing data untuk mengurangi jumlah False Negative di masa depan.
