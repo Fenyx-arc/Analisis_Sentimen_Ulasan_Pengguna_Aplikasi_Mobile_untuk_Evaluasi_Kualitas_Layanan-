@@ -20,7 +20,7 @@ Proyek ini mengacu pada standar metodologi **CRISP-DM** (Cross-Industry Standard
 Tahap ini berfokus pada pengenalan data ulasan yang digunakan, pemeriksaan struktur data, dan analisis distribusi kelas sentimen.
 
 ### Analisis Grafik Distribusi Sentimen
-Berdasarkan grafik distribusi yang diperoleh, terdapat karakteristik penting pada dataset: <img width="617" height="475" alt="data_understanding" src="https://github.com/user-attachments/assets/ad7a5fba-f645-4a33-a0bc-e99ef059f67c" />
+Berdasarkan grafik distribusi yang diperoleh, terdapat karakteristik penting pada dataset: <img width="708" height="475" alt="data_understanding" src="https://github.com/user-attachments/assets/5ab8c338-801d-4a9c-92a0-1f80bd7650ce" />
 
 * **Jumlah Data:** Sentimen **Negatif** mencapai sekitar **1100 ulasan**, sedangkan sentimen **Positif** berada di kisaran **600 ulasan**. Total dataset berkisar 1700 ulasan.
 * **Mengapa Hasilnya Demikian?** Dominasi ulasan negatif ini mencerminkan perilaku riil pengguna aplikasi (*user behavior*), di mana pengguna cenderung lebih termotivasi untuk menulis ulasan ketika mereka mengalami masalah (bug, aplikasi lambat, atau kegagalan transaksi) dibandingkan saat aplikasi berjalan normal. Fenomena ini sangat menguntungkan untuk tujuan evaluasi layanan karena memberikan banyak sampel data keluhan untuk dipelajari oleh model.
