@@ -82,7 +82,7 @@ Model dalam proyek ini dibangun menggunakan algoritma **Logistic Regression** me
 
 Model diuji menggunakan 20% data pengujian yang berjumlah sekitar 344 sampel. Metrik evaluasi utama divisualisasikan melalui **Confusion Matrix** di bawah ini:
 
-![Distribusi Sentimen](<img width="526" height="475" alt="confusion_matrix" src="https://github.com/user-attachments/assets/25024315-65b3-4484-b14c-4725318da136" />)
+<img width="526" height="475" alt="confusion_matrix" src="https://github.com/user-attachments/assets/25024315-65b3-4484-b14c-4725318da136" />
 
 
 📊 **Analisis Confusion Matrix:**
