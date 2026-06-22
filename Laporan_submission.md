@@ -23,7 +23,7 @@ Dalam era digital saat ini, ulasan pengguna di platform distribusi aplikasi (sep
 
 🛠 **Solution Approach**
 ✔ **Ekstraksi Fitur Teks:** Menggunakan **TF-IDF Vectorizer** untuk mengubah teks ulasan menjadi representasi matriks numerik berdasarkan frekuensi dan bobot kata.
-✔ **Algoritma Klasifikasi:** Menerapkan algoritma *Machine Learning* **Logistic Regression** untuk memprediksi probabilitas dan kelas sentimen.
+✔ **Algoritma Klasifikasi:** Menerapkan algoritma Machine Learning **Support Vector Machine (SVM)** dengan pendekatan kernel linear untuk mencari hyperplane optimal dalam mengklasifikasikan kelas sentimen.
 
 ---
 
