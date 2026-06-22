@@ -55,7 +55,7 @@ Dataset ini memiliki total **12.495 baris** ulasan. Berdasarkan hasil *Explorato
 
 <img width="704" height="471" alt="download" src="https://github.com/user-attachments/assets/de28f4e7-c575-4043-816b-5be97b755f39" />
 
-* **Insight:** Grafik dan tabel di atas menunjukkan bahwa jumlah ulasan **Positif** (5.654) lebih dominan dibandingkan ulasan **Negatif** (6.841). Ketimpangan jumlah data ini merupakan hal yang umum dalam dataset ulasan aplikasi. Informasi ini sangat krusial bagi model *Machine Learning* untuk mempelajari pola perbedaan kosakata antara keluhan dan apresiasi pengguna, sehingga model dapat mengklasifikasikan sentimen secara otomatis dengan akurasi yang optimal.
+* **Insight:** Secara matematis, 6.841 lebih besar dari 5.654. Kalimat ini bertentangan dengan angka yang disajikan dan juga berlawanan dengan poin Kesimpulan Evaluasi nomor 2 yang menyebutkan adanya **"dominasi ulasan negatif (6.841 data)"**.
 
 ---
 
