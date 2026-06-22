@@ -1,4 +1,4 @@
-<img width="617" height="475" alt="data_understanding" src="https://github.com/user-attachments/assets/6e287e81-e7d2-4849-a457-cec6ea112db9" /># Laporan Proyek Machine Learning
+# Laporan Proyek Machine Learning
 [Rifqi Fakhrezi Pasya]
 [TRY DYMAZ PRAYOGA]
 # Analisis Sentimen Ulasan Pengguna Aplikasi Mobile untuk Evaluasi Kualitas Layanan
