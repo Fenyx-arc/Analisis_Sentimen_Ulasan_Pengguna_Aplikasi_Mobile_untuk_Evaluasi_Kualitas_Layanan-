@@ -34,7 +34,8 @@ Tahap ini berfokus pada pengenalan data ulasan yang digunakan, pemeriksaan struk
 ### Analisis Grafik Distribusi Sentimen
 Berdasarkan eksplorasi data (*Exploratory Data Analysis*), ditemukan karakteristik penting pada dataset terkait ketidakseimbangan kelas (*class imbalance*):
 
-[![data_understanding](https://private-user-images.githubusercontent.com/73056994/611205577-5ab8c338-801d-4a9c-92a0-1f80bd7650ce.png)](https://private-user-images.githubusercontent.com/73056994/611205577-5ab8c338-801d-4a9c-92a0-1f80bd7650ce.png)
+[![data_understanding]<img width="708" height="475" alt="data_understanding" src="https://github.com/user-attachments/assets/56cca0db-7eee-44f8-b46c-9b751800b6a7" />
+
 
 * **Jumlah Data:** Sentimen **Negatif** mendominasi dengan jumlah sekitar **1.100 ulasan**, sedangkan sentimen **Positif** berada di kisaran **600 ulasan**. Total dataset berkisar di angka 1.700 ulasan.
 * **Insight:** Dominasi ulasan negatif ini wajar dan mencerminkan perilaku riil pengguna (*user behavior*). Pengguna cenderung lebih termotivasi untuk meluangkan waktu menulis ulasan ketika mereka mengalami kendala teknis (seperti *bug*, aplikasi lambat, atau transaksi gagal) dibandingkan saat aplikasi berjalan normal. Fenomena ini menguntungkan untuk tujuan evaluasi layanan karena memberikan banyak sampel data keluhan untuk dipelajari oleh model.
@@ -65,7 +66,7 @@ Pada tahap ini, matriks TF-IDF yang dihasilkan dari data latih dimasukkan ke dal
 
 Model diuji menggunakan 20% data uji (sekitar 344 sampel ulasan). Kinerja model divisualisasikan secara komprehensif melalui metrik **Confusion Matrix**.
 
-[![confusion_matrix](https://private-user-images.githubusercontent.com/73056994/611212270-b6743166-cb45-4c54-9d9c-54ade428950e.png)](https://private-user-images.githubusercontent.com/73056994/611212270-b6743166-cb45-4c54-9d9c-54ade428950e.png)
+[![confusion_matrix]<img width="526" height="475" alt="confusion_matrix" src="https://github.com/user-attachments/assets/1d8fb570-1ff6-417b-b181-35744b907a1b" />
 
 ### Analisis Confusion Matrix
 Dari visualisasi *heatmap* di atas, rincian performa model adalah sebagai berikut:
