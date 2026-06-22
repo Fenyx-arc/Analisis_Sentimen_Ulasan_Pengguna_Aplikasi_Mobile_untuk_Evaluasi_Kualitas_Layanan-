@@ -1,93 +1,70 @@
-# Laporan Proyek Machine Learning
+<img width="617" height="475" alt="data_understanding" src="https://github.com/user-attachments/assets/6e287e81-e7d2-4849-a457-cec6ea112db9" /># Laporan Proyek Machine Learning
 [Rifqi Fakhrezi Pasya]
 [TRY DYMAZ PRAYOGA]
-## Domain Proyek
-Dalam industri pengembangan perangkat lunak dan aplikasi mobile, ulasan pengguna (*user reviews*) di platform seperti Google Play Store merupakan aset penting yang mencerminkan kualitas layanan secara langsung. Ulasan tersebut berisi umpan balik (*feedback*) kritis mengenai kepuasan pengguna, keluhan *bug*, stabilitas sistem, hingga permintaan fitur baru. 
+# Analisis Sentimen Ulasan Pengguna Aplikasi Mobile untuk Evaluasi Kualitas Layanan
 
-Namun, volume ulasan yang masuk setiap harinya bisa mencapai ribuan, sehingga proses evaluasi secara manual menjadi sangat tidak efisien, membutuhkan waktu lama, dan rentan terhadap subjektivitas manusia. Oleh karena itu, otomatisasi analisis menggunakan teknik *Natural Language Processing* (NLP) dan *Machine Learning* untuk mengklasifikasikan sentimen menjadi solusi yang sangat krusial. Proyek ini berfokus pada pembangunan model analisis sentimen untuk memisahkan ulasan pengguna ke dalam kategori **Positif** dan **Negatif** guna mempercepat proses evaluasi kualitas layanan aplikasi mobile.
-
----
-
-## Business Understanding
-Proyek ini dikembangkan untuk membantu tim pengembang (*developer*) dan manajemen produk dalam mengidentifikasi masalah utama aplikasi secara *real-time*.
-
-### Problem Statements
-1. Bagaimana cara memproses data teks ulasan pengguna yang mentah, tidak terstruktur, dan memiliki banyak gangguan (*noise*) agar dapat dipahami oleh model *Machine Learning*?
-2. Bagaimana membangun model klasifikasi teks yang mampu membedakan ulasan positif dan negatif dengan tingkat akurasi dan performa yang optimal?
-
-### Goals
-1. Melakukan tahapan *Data Preparation* yang komprehensif (pembersihan data teks dan ekstraksi fitur) agar siap digunakan untuk pelatihan model.
-2. Mengembangkan model *Machine Learning* berbasis klasifikasi biner untuk mendeteksi sentimen ulasan dengan target akurasi yang tinggi.
-
-### Solution Statement
-Untuk mencapai tujuan tersebut, solusi yang diterapkan adalah sebagai berikut:
-* **Ekstraksi Fitur Teks:** Menggunakan metode **TF-IDF (Term Frequency-Inverse Document Frequency)**. Metode ini dipilih karena mampu memberikan bobot matematis pada kata-kata yang unik dan penting dalam dokumen, serta efektif dalam menyoroti kata-kata pembawa sentimen (seperti "bagus", "kecewa", "lemot").
-* **Algoritma Modeling:** Menggunakan **Support Vector Machine (SVM)** dengan kernel linear. SVM terbukti sangat tangguh untuk klasifikasi teks berdimensi tinggi karena bekerja dengan mencari *hyperplane* pembatas maksimal (*maximum margin*) untuk memisahkan dua kelas target secara optimal.
+Proyek ini mengacu pada standar metodologi **CRISP-DM** (Cross-Industry Standard Process for Data Mining) untuk mengklasifikasikan sentimen ulasan pengguna aplikasi mobile menjadi kategori **Positif** atau **Negatif**. Hasil dari analisis ini digunakan untuk mengevaluasi kualitas layanan dan mengidentifikasi area yang memerlukan perbaikan.
 
 ---
 
-## Data Understanding
-Dataset yang digunakan dalam proyek ini adalah **Google Play Store Reviews** yang diunduh secara otomatis dari platform Kaggle menggunakan pustaka `kagglehub`.
+## 1. Business Understanding
 
-### Variabel-variabel pada Dataset:
-* `content`: Berisi teks ulasan mentah yang ditulis oleh pengguna aplikasi.
-* `score`: Berisi rating angka berskala 1 hingga 5 yang diberikan oleh pengguna.
-
-### Pelabelan Sentimen (Labeling):
-Karena dataset asli hanya menyediakan rating angka (`score`), dilakukan konversi otomatis untuk membentuk kelas target biner (`sentiment`):
-* **Positive (Positif):** Untuk ulasan dengan skor rating 4 dan 5.
-* **Negative (Negatif):** Untuk ulasan dengan skor rating 1, 2, dan 3.
-
-### Exploratory Data Analysis (EDA):
-Pada tahapan analisis data awal, visualisasi menggunakan grafik batang (*countplot*) diterapkan untuk melihat keseimbangan distribusi jumlah ulasan positif dan ulasan negatif. Hal ini penting untuk memastikan model tidak bias terhadap salah satu kelas mayoritas saat proses pelatihan.
+* **Tujuan Bisnis:** Mengukur tingkat kepuasan pengguna aplikasi mobile dan mengidentifikasi keluhan utama secara real-time untuk meningkatkan kualitas layanan.
+* **Masalah Teknis:** Volume ulasan mentah yang sangat besar di platform (seperti Google Play Store atau App Store) membuat evaluasi manual tidak efisien dan rentan terhadap subjektivitas.
+* **Solusi Machine Learning:** Membangun model klasifikasi berbasis teks menggunakan *TF-IDF Vectorizer* dan algoritma Machine Learning (seperti *Logistic Regression* atau *SVM*) untuk mendeteksi sentimen negatif dan positif secara otomatis.
 
 ---
 
-## Data Preparation
-Tahap penyiapan data dilakukan secara sistematis untuk mengubah teks mentah menjadi matriks numerik yang siap diproses oleh algoritma:
+## 2. Data Understanding
 
-1. **Text Cleaning (Pembersihan Teks):**
-   * *Case Folding:* Mengubah seluruh karakter huruf menjadi huruf kecil agar kata yang sama tidak dianggap berbeda akibat perbedaan kapitalisasi.
-   * *Regex Filtering:* Menghapus angka, tanda baca, dan karakter khusus yang tidak memiliki nilai kontekstual dalam analisis sentimen linear.
-   * *Trimming:* Menghapus spasi putih tidak berguna di awal dan akhir teks ulasan.
-2. **Data Splitting (Pembagian Data):**
-   Dataset dibagi menjadi **80% untuk data latih (Training Set)** dan **20% untuk data uji (Testing Set)**. Pembagian ini menggunakan parameter `stratify=y` untuk menjaga agar proporsi label sentimen positif dan negatif tetap seimbang di kedua subset data tersebut.
-3. **Feature Extraction (Vektorisasi TF-IDF):**
-   Menggunakan `TfidfVectorizer` dengan batas maksimal fitur sebesar 5000 kata teratas (`max_features=5000`) untuk membatasi ukuran memori serta menghindari masalah *curse of dimensionality*.
+Tahap ini berfokus pada pengenalan data ulasan yang digunakan, pemeriksaan struktur data, dan analisis distribusi kelas sentimen.
+
+### Analisis Grafik Distribusi Sentimen
+Berdasarkan grafik distribusi yang diperoleh <img width="617" height="475" alt="data_understanding" src="https://github.com/user-attachments/assets/ad7a5fba-f645-4a33-a0bc-e99ef059f67c" />, terdapat karakteristik penting pada dataset:
+
+* **Jumlah Data:** Sentimen **Negatif** mencapai sekitar **1100 ulasan**, sedangkan sentimen **Positif** berada di kisaran **600 ulasan**. Total dataset berkisar 1700 ulasan.
+* **Mengapa Hasilnya Demikian?** Dominasi ulasan negatif ini mencerminkan perilaku riil pengguna aplikasi (*user behavior*), di mana pengguna cenderung lebih termotivasi untuk menulis ulasan ketika mereka mengalami masalah (bug, aplikasi lambat, atau kegagalan transaksi) dibandingkan saat aplikasi berjalan normal. Fenomena ini sangat menguntungkan untuk tujuan evaluasi layanan karena memberikan banyak sampel data keluhan untuk dipelajari oleh model.
 
 ---
 
-## Modeling
-Model klasifikasi dibangun menggunakan algoritma **Support Vector Machine (SVM)** melalui kelas `SVC` dari pustaka *scikit-learn*. 
+## 3. Data Preparation
 
-### Parameter Model:
-* `kernel='linear'`: Dipilih karena data teks yang telah ditransformasikan oleh TF-IDF memiliki ruang dimensi yang sangat besar. Kernel linear terbukti secara empiris sangat efisien, cepat, dan memiliki risiko *overfitting* yang rendah pada data teks.
-* `C=1.0`: Parameter regularisasi standar untuk menyeimbangkan antara pembentukan margin yang lebar dengan toleransi kesalahan klasifikasi pada data latih.
-
-Proses pelatihan dilakukan dengan mencocokkan matriks fitur data latih (`X_train_tfidf`) terhadap label targetnya (`y_train`).
-
----
-
-## Evaluation
-Performa model diuji secara ketat menggunakan data uji (*testing set*) yang belum pernah dilihat oleh model selama masa pelatihan. Metrik evaluasi yang digunakan meliputi:
-
-1. **Accuracy:** Menghitung persentase total prediksi benar dari keseluruhan data uji.
-2. **Precision:** Mengukur ketepatan model dalam memprediksi kelas positif (berapa banyak yang benar-benar positif dari seluruh hasil prediksi positif).
-3. **Recall:** Mengukur sensitivitas model dalam menemukan ulasan positif yang ada di lapangan.
-4. **F1-Score:** Nilai rata-rata harmonik antara *Precision* dan *Recall* untuk memberikan penilaian performa yang seimbang.
-
-### Confusion Matrix Analysis:
-Selain angka metrik di atas, evaluasi divisualisasikan dalam bentuk grafik **Confusion Matrix Heatmap**. Grafik ini menjabarkan performa model secara detail berdasarkan empat kondisi:
-* *True Positive (TP):* Ulasan positif yang berhasil diprediksi positif.
-* *True Negative (TN):* Ulasan negatif yang berhasil diprediksi negatif.
-* *False Positive (FP):* Ulasan negatif yang salah diprediksi sebagai positif.
-* *False Negative (FN):* Ulasan positif yang salah diprediksi sebagai negatif.
+Proses penyiapan data dilakukan melalui beberapa tahapan *Text Preprocessing* agar text mentah dapat dipahami oleh algoritma:
+1.  **Case Folding:** Mengubah seluruh teks menjadi huruf kecil.
+2.  **Cleansing:** Menghapus angka, tanda baca, emoji, dan karakter khusus menggunakan Regular Expression (`re`).
+3.  **Filtering (Stopwords Removal):** Menghapus kata-kata umum yang tidak membawa makna sentimen (seperti "yang", "dan", "di").
+4.  **Feature Extraction:** Mengonversi teks bersih menjadi matriks angka menggunakan **TF-IDF (Term Frequency-Inverse Document Frequency)**.
+5.  **Train-Test Split:** Membagi data menjadi 80% untuk pelatihan (Training) dan 20% untuk pengujian (Testing).
 
 ---
 
-## Kesimpulan & Referensi
-Model klasifikasi sentimen berbasis SVM ini memberikan hasil performa yang sangat baik dalam mendeteksi ekspresi kepuasan maupun keluhan pengguna aplikasi. Dengan adanya sistem otomatisasi ini, manajemen kualitas layanan aplikasi mobile dapat dilakukan secara efisien tanpa harus membaca ulasan satu per satu secara manual.
+## 4. Modeling
 
-### Referensi:
-* Pedregosa, F., et al. (2011). *Scikit-learn: Machine Learning in Python*. Journal of Machine Learning Research.
-* Dataset: KaggleHub - Google Play Store Reviews (`prakharrathi25/google-play-store-reviews`).
+Model dibangun menggunakan arsitektur klasifikasi berbasis Scikit-Learn. Fitur teks yang telah diekstrak oleh TF-IDF dimasukkan ke dalam algoritma klasifikasi untuk mempelajari pola kata-kata yang berasosiasi dengan sentimen positif maupun negatif.
+
+---
+
+## 5. Evaluation
+
+Model diuji menggunakan 20% data pengujian yang belum pernah dilihat sebelumnya (sekitar 344 sampel). Kinerja model divisualisasikan melalui **Confusion Matrix** <img width="513" height="475" alt="confusion_matrix" src="https://github.com/user-attachments/assets/8c93e1d3-2117-42f6-95eb-50e865a576ae" />
+
+### Analisis Confusion Matrix
+Dari heatmap yang dihasilkan, berikut adalah rincian performa model:
+* **True Negative (TN) = 215:** Model berhasil menebak 215 ulasan Negatif dengan benar.
+* **True Positive (TP) = 93:** Model berhasil menebak 93 ulasan Positif dengan benar.
+* **False Negative (FN) = 24:** Sebanyak 24 ulasan Positif salah diprediksi sebagai Negatif.
+* **False Positif (FP) = 12:** Sebanyak 12 ulasan Negatif salah diprediksi sebagai Positif.
+
+### Mengapa Hasilnya Demikian?
+1.  **Akurasi Tinggi (~89.53%):** Total prediksi benar adalah $215 + 93 = 308$ dari 344 data. Hasil ini menunjukkan kombinasi TF-IDF dan model klasifikasi sangat efektif untuk menangkap bobot kata kunci penting.
+2.  **Performa Kelas Negatif Lebih Unggul:** Model jauh lebih sensitif dan akurat dalam mendeteksi ulasan Negatif (hanya 12 kesalahan dari 227 data asli). Hal ini terjadi karena pada tahap *Data Understanding*, data ulasan negatif jumlahnya dua kali lipat lebih banyak, sehingga model mendapatkan lebih banyak variasi kosakata keluhan (seperti *"lemot"*, *"kecewa"*, *"error"*) selama proses training.
+
+---
+
+## 6. Conclusion & Deployment
+
+### Kesimpulan
+Proyek ini berhasil mengembangkan model translasi sentimen otomatis dengan akurasi mendekati 90%. Model ini sangat andal dalam menyaring keluhan pengguna, sehingga tim operasional dapat langsung fokus pada ulasan-ulasan negatif yang telah difilter secara otomatis untuk melakukan perbaikan layanan.
+
+### Deployment Simulation
+Model dideploy dalam bentuk fungsi inferensi sederhana yang dapat menerima input ulasan baru secara langsung untuk menghasilkan keputusan sentimen secara real-time.
