@@ -2,7 +2,6 @@
 
 ## Project Overview
 
-[![Mobile App Reviews](https://private-user-images.githubusercontent.com/73056994/611205577-5ab8c338-801d-4a9c-92a0-1f80bd7650ce.png)]
 Dalam era digital saat ini, ulasan pengguna di platform distribusi aplikasi (seperti *Google Play Store* atau *App Store*) sangat krusial bagi kelangsungan sebuah aplikasi *mobile*. Namun, volume ulasan mentah yang sangat besar membuat evaluasi kualitas layanan secara manual menjadi sangat tidak efisien, memakan waktu, dan rentan terhadap bias subjektivitas. Oleh karena itu, diperlukan sebuah sistem otomatis menggunakan *Machine Learning* yang mampu mengklasifikasikan sentimen ulasan menjadi kategori **Positif** atau **Negatif**. Proyek ini bertujuan untuk membangun model analisis sentimen guna mengevaluasi kualitas layanan dan mengidentifikasi area yang memerlukan perbaikan secara *real-time*.
 
 💡 **Manfaat Proyek:**
@@ -83,7 +82,8 @@ Model dalam proyek ini dibangun menggunakan algoritma **Logistic Regression** me
 
 Model diuji menggunakan 20% data pengujian yang berjumlah sekitar 344 sampel. Metrik evaluasi utama divisualisasikan melalui **Confusion Matrix** di bawah ini:
 
-[![confusion_matrix](https://private-user-images.githubusercontent.com/73056994/611212270-b6743166-cb45-4c54-9d9c-54ade428950e.png)](https://private-user-images.githubusercontent.com/73056994/611212270-b6743166-cb45-4c54-9d9c-54ade428950e.png)
+![Distribusi Sentimen](<img width="526" height="475" alt="confusion_matrix" src="https://github.com/user-attachments/assets/25024315-65b3-4484-b14c-4725318da136" />)
+
 
 📊 **Analisis Confusion Matrix:**
 Berdasarkan visualisasi *heatmap* di atas, rincian performa model adalah:
