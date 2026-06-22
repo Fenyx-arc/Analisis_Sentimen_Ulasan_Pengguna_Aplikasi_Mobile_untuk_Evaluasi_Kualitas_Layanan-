@@ -96,10 +96,10 @@ Model diuji menggunakan 20% data pengujian yang berjumlah sekitar 344 sampel. Me
 
 📊 **Analisis Confusion Matrix:**
 Berdasarkan visualisasi *heatmap* di atas, rincian performa model adalah:
-* **True Negative (TN): 1181 (Prediksi negatif benar).
-* **True Positive (TP): 900 (Prediksi positif benar).
-* **False Positive (FP): 187 (Sentimen negatif salah prediksi menjadi positif).
-* **False Negative (FN): 231 (Sentimen positif salah prediksi menjadi negatif).
+* **True Negative (TN):** 1181 (Prediksi negatif benar).
+* **True Positive (TP):** 900 (Prediksi positif benar).
+* **False Positive (FP):** 187 (Sentimen negatif salah prediksi menjadi positif).
+* **False Negative (FN):** 231 (Sentimen positif salah prediksi menjadi negatif).
 
 📌 **Kesimpulan Evaluasi:**
 1. **Performa Model yang Solid:** Kombinasi metode TF-IDF dengan algoritma Logistic Regression terbukti efektif dalam melakukan klasifikasi sentimen dengan tingkat akurasi sebesar 83,27%. Model menunjukkan performa yang stabil dan mampu membedakan antara sentimen positif dan negatif dengan baik.
