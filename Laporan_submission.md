@@ -46,7 +46,8 @@ Model dibangun menggunakan arsitektur klasifikasi berbasis Scikit-Learn. Fitur t
 
 ## 5. Evaluation
 
-Model diuji menggunakan 20% data pengujian yang belum pernah dilihat sebelumnya (sekitar 344 sampel). Kinerja model divisualisasikan melalui **Confusion Matrix** <img width="513" height="475" alt="confusion_matrix" src="https://github.com/user-attachments/assets/8c93e1d3-2117-42f6-95eb-50e865a576ae" />
+Model diuji menggunakan 20% data pengujian yang belum pernah dilihat sebelumnya (sekitar 344 sampel). Kinerja model divisualisasikan melalui **Confusion Matrix** <img width="526" height="475" alt="confusion_matrix" src="https://github.com/user-attachments/assets/b6743166-cb45-4c54-9d9c-54ade428950e" />
+
 
 ### Analisis Confusion Matrix
 Dari heatmap yang dihasilkan, berikut adalah rincian performa model:
