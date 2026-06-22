@@ -29,27 +29,33 @@ Dalam era digital saat ini, ulasan pengguna di platform distribusi aplikasi (sep
 
 ## Data Understanding
 
-Dataset yang digunakan berisi ulasan pengguna terhadap sebuah aplikasi *mobile* yang dikumpulkan dari *platform* publik, terdiri dari sekitar 1.700 ulasan.
+Dataset yang digunakan dalam proyek ini bersumber dari *Google Play Store Reviews*. Dataset ini berisi ulasan asli pengguna beserta skor rating yang diberikan, yang kemudian dikonversi menjadi label sentimen untuk kebutuhan klasifikasi.
 
 📂 **Dataset Components:**
 
 | Fitur | Deskripsi | Tipe Data |
 |---|---|---|
-| **Content** | Teks ulasan atau *review* mentah dari pengguna aplikasi | Teks (*String*) |
+| **Content** | Teks ulasan atau *review* mentah dari pengguna | Teks (*String*) |
 | **Score** | Skor rating (1-5) yang diberikan pengguna | Numerik (*Integer*) |
 | **Sentiment** | Label kelas sentimen (Positif / Negatif) | Kategorikal |
 
 📌 **Uraian Fitur:**
-* **Content:** Fitur independen (*predictor*) yang berisi kalimat yang ditulis pengguna saat menilai aplikasi.
-* **Score:** Nilai rating sebagai dasar penentuan sentimen.
-* **Sentiment:** Target klasifikasi (Fitur dependen) hasil konversi dari nilai *Score* (Skor 4-5 sebagai *Positive*, 1-3 sebagai *Negative*).
+* **Content:** Fitur independen (*predictor*) yang berisi kalimat ulasan dari pengguna.
+* **Score:** Nilai rating sebagai dasar penentuan label sentimen.
+* **Sentiment:** Target klasifikasi (Fitur dependen) hasil konversi dari nilai *Score* (Skor 4-5 dikategorikan sebagai *Positive*, sedangkan 1-3 sebagai *Negative*).
 
 🔍 **Kondisi Data:**
-Dataset ini memiliki total **12.495 baris** ulasan. Berdasarkan *Exploratory Data Analysis* (EDA), distribusi sentimen pada dataset adalah sebagai berikut:
+Dataset ini memiliki total **12.495 baris** ulasan. Berdasarkan hasil *Exploratory Data Analysis* (EDA), berikut adalah rincian distribusi jumlah ulasan per kategori:
 
-<img width="708" height="475" alt="data_understanding" src="https://github.com/user-attachments/assets/8f5dcf7e-0979-47c7-a2be-94c26c472f0b" />
+| Kategori Sentimen | Jumlah Ulasan |
+| :--- | :--- |
+| **Positive** | 5.654 |
+| **Negative** | 6.841 |
+| **Total** | **12.495** |
 
-* **Insight:** Grafik di atas menunjukkan distribusi sentimen pada dataset yang digunakan. Dominasi kelas sentimen ini memberikan gambaran umum mengenai kepuasan pengguna terhadap aplikasi yang diulas, yang kemudian digunakan sebagai basis pembelajaran model untuk mengklasifikasikan sentimen secara otomatis.
+<img width="704" height="471" alt="download" src="https://github.com/user-attachments/assets/de28f4e7-c575-4043-816b-5be97b755f39" />
+
+* **Insight:** Grafik dan tabel di atas menunjukkan bahwa jumlah ulasan **Positif** (5.654) lebih dominan dibandingkan ulasan **Negatif** (6.841). Ketimpangan jumlah data ini merupakan hal yang umum dalam dataset ulasan aplikasi. Informasi ini sangat krusial bagi model *Machine Learning* untuk mempelajari pola perbedaan kosakata antara keluhan dan apresiasi pengguna, sehingga model dapat mengklasifikasikan sentimen secara otomatis dengan akurasi yang optimal.
 
 ---
 
